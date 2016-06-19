@@ -16,9 +16,7 @@ public class CurrentLocation {
 	//public double distance(double other_lat, double other_lon){
 		
 	//	return getDist(this.latitude, this.longitude, other_lat, other_lon, "K");
-	//}
-	
-	public double getDist(double lat1, double lon1, double lat2, double lon2, String unit) {
+	/* public double getDist(double lat1, double lon1, double lat2, double lon2, String unit) {
 		double theta = lon1 - lon2;
 		double dist = Math.sin(deg2rad(lat1)) * Math.sin(deg2rad(lat2)) + Math.cos(deg2rad(lat1)) * Math.cos(deg2rad(lat2)) * Math.cos(deg2rad(theta));
 		dist = Math.acos(dist);
@@ -31,7 +29,7 @@ public class CurrentLocation {
 		}
 
 		return (dist);
-	}
+	} */
 
 	/*:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::*/
 	/*::	This function converts decimal degrees to radians						 :*/
@@ -50,13 +48,9 @@ public class CurrentLocation {
 	//Counts the surrounding box.
 	public double[] closestPoints(double distance_in_km) {
 		
-		// Figure out the corners of a box surrounding our lat/lng.
-		double radius = 6371; // of earth in km
-		double lat1 = 0;
-		double lat2 = 0;
-		double lon1 = 0;
-		double lon2 = 0;
-		double[] arrayLocation = new double[4];
+			// Figure out the corners of a box surrounding our lat/lng.
+			double radius = 6371; // of earth in km
+			double[] arrayLocation = new double[4];
 
 			// bearings
 			int due_north = 0;
@@ -77,7 +71,6 @@ public class CurrentLocation {
 
 			double eastmost = lon_r + Math.atan2(Math.sin(due_east)*Math.sin(distance_in_km/radius)*Math.cos(lat_r),Math.cos(distance_in_km/radius)-Math.sin(lat_r)*Math.sin(lat_r));
 			double westmost = lon_r + Math.atan2(Math.sin(due_west)*Math.sin(distance_in_km/radius)*Math.cos(lat_r),Math.cos(distance_in_km/radius)-Math.sin(lat_r)*Math.sin(lat_r));
-
 
 			northmost = rad2deg(northmost);
 			southmost = rad2deg(southmost);
@@ -104,5 +97,5 @@ public class CurrentLocation {
 			}
 			
 			return arrayLocation;
-		}
+	}
 }
